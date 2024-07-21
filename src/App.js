@@ -9,40 +9,18 @@ function App() {
 
   const [token, setToken ]= useState(null)
   const [isBookPage, setBookPage] = useState(false)
-
-
-
   useEffect(() => {
 
     if(!token) return
-
     setBookPage(true)
-
-
   },[token])
-
-
-
-    
 
   return (
     <div className="App">
       <header className="App-header">
-        
-        
         {
-
           isBookPage ? <Books token={token}/> : <Login setToken= {setToken}/>
-
-
-
         }
-
-        
-
-
-
-
       </header>
     </div>
   );
@@ -53,7 +31,6 @@ function Login({setToken}){
 
     const [user,setUser] = useState('')
     const [pass, setPass] = useState('')
-
 
     const login = async () => {
 
@@ -82,10 +59,8 @@ function Login({setToken}){
 
   return(
         <div className="login">
-          
           <input placeholder="user" id="_user" className="_input"  onChange={userChange} />
           <input placeholder="pass" id="_pass"  className="_input" onChange={passChange}/>
-
           <button  className="btn" onClick={login}>login</button>
         </div>
   )
@@ -106,22 +81,17 @@ function Books({token}){
           'authorization' : token
         }
       }).then(async (res) => {
-
         let x = await res.json()
-
         setBooks(x)
         
       })
-
     }
-
     getBooks()
   },[])
 
   return(
 
     <div className='_books'>
-
         {
           books.map((x,i) => (
 
@@ -133,9 +103,6 @@ function Books({token}){
 
           ))
         }
-
-        
-
     </div>
 
   )
